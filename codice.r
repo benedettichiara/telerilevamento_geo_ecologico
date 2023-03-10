@@ -198,3 +198,6 @@ nir <- l2011[[4]] #or:nir <- l2011$B4_sre
 
 plot(nir, col=cl)
 # il codice che risulta è molto più snello
+
+# R non salva i dati raster che sono sempre temporanei per cui non serve salvare anche li
+# bisogna rifare tutto ogni volta
