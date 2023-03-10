@@ -164,4 +164,37 @@ plot(l2011)
 # tutti gli oggetti che assorbono il blu: bianchi
 # tutti gli oggetti che lo riflettono invece saranno: verdi
 # utilizzeremo un sacco il grafico risultante dalla banda 4 near infrared, il grafico che risulta verdino
-#cambiamo la scala di colori
+
+#cambiamo la scala di colori: riflettanza degli oggetti secondo una differente lunghezza d'onda
+# per cambiare colori usiamo la funzione: colorRampPalette(), non usare rosso-verde perché i daltonici non saprebbero riconoscerli (leggi articolo "scientific maps should reach everyone)
+cl <- colorRampPalette(c("red", "orange", "yellow"))(100) #100 sono le fumature 
+# ("red", "orange", "yellow") si tratta di tre elementi vettore: abbiamo bisogno di una funzione che li combini (c)
+# tra questi tre colori posso avere un sacco di diverse gradazioni, fuori dalle parentesi metto il numero delle gradazioni/sfumature che voglio
+# metto le virgolette per segnare i colori poiché questi in R sono immagazzinati direttamente con le virgolette
+# R software che è sensibile al minuscolo o maiuscolo
+# cl <- assegnazione della funzione coloretc ad un oggetto
+
+#vediamo graficamente i dati secondo la nostra nuova colorazione
+plot(l2011, col=cl)
+# per aggiungere argomenti (aggiungere color and palet ad l2011) si mette la virgola
+# serve mettere anche col=, ci serve per aggiungere un argomento
+
+# plottare una sola banda, un solo elemento (l'immagine è formata dai 7 elementi (7 bande), ongi banda segna un elemento)
+# ci sono due modalità
+
+# nome file l2011, scegliamo l'elemento 4 
+# in R gli elementi si identificano con parentesi quadra
+# ma siamo in due dimensioni (stiamo usando matrici) per cui dobbiamo usare doppia parentesi quadra
+plot(l2011[[4]], col=cl) 
+
+# scrittura alternativa
+# per avere informazioni sull'immagine basta scrivere il nome dell'oggetto (es l2011) e premere invio (facendolo troviamo segnati i nomi delle diverse bande) 
+# a noi interessa la B4_sre
+# dollaro è il sibolo per legare i pezzi fra loro, lo utilizziamo anche noi per legare il codice alla singola banda
+plot(l2011$B4_sre, col=cl)
+
+# posso assegnare la banda dell'infrarosso ad un oggetto 
+nir <- l2011[[4]] #or:nir <- l2011$B4_sre
+
+plot(nir, col=cl)
+# il codice che risulta è molto più snello
