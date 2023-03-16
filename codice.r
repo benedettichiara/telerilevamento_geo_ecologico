@@ -219,4 +219,15 @@ plot(nir, col=cl)
 #oggi andiamo a cambiare la gamma dei colori delle nostre immagini considerando tutta la gamma dei colori che R prevede 
 # andiamo a creare una nuova colorRampPalette(c("xxx)
 cl <- colorRampPalette(c("cyan", "azure", "darkorchid", "aquamarine") (100)
+
+# plottiamo un solo elemento con questa maledetta colorazione
+#plot(l2011$b4_sre, col=cl)
+dev.off()
+#comando che serve a chiudere le finestre (tipo il grafico appena aperto)
+
+#come esportare grafici da R: funzione pdf
+pdf("myfirstgraph.pdf")
+plot(l2011$B4_sre, col=cl)
+dev.off()
+#mettiamo un nome a piacere tra virgolette del pdf che vogliamo ottenere, poi sotto scriviamo ciò che cogliamo esportare
                       
