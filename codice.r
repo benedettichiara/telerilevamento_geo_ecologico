@@ -218,7 +218,8 @@ plot(nir, col=cl)
 #seconda lezione
 #oggi andiamo a cambiare la gamma dei colori delle nostre immagini considerando tutta la gamma dei colori che R prevede 
 # andiamo a creare una nuova colorRampPalette(c("xxx)
-cl <- colorRampPalette(c("cyan", "azure", "darkorchid", "aquamarine") (100)
+cl <- colorRampPalette(c("cyan","azure","darkorchid","aquamarine") (100)
+# sti colori a me non sono venutiiiiii
 
 # plottiamo un solo elemento con questa maledetta colorazione
 #plot(l2011$b4_sre, col=cl)
@@ -229,5 +230,38 @@ dev.off()
 pdf("myfirstgraph.pdf")
 plot(l2011$B4_sre, col=cl)
 dev.off()
-#mettiamo un nome a piacere tra virgolette del pdf che vogliamo ottenere, poi sotto scriviamo ciò che cogliamo esportare
-                      
+#mettiamo un nome a piacere tra virgolette del pdf che vogliamo ottenere (nel nostro caso "myfirstgraph"), poi sotto scriviamo ciò che vogliamo esportare
+#il grafico in pdf verrà salvato nella cartella settata all'inizio (setwd("C:/Users/chiara/Desktop/landsat 2011"))
+                       
+#plottare diverse bande in un multiframe: esempio sopra la banda del rosso e sotto la badna dell'infrarosso (nir)
+#dispongo quindi i miei grafici su due righe e una colonna
+#la funzione che si utilizza è par (funzione generica), ragioniamo per righe (row) e colonne
+par(mfrow=c(2,1))
+plot(l2011$B3_sre, col=cl)
+plot(l2011$B4_sre, col=cl)
+# devo combinare i due vettori 2 (righe) e 1 (colonna) per cui serve la c (combined)
+#in questo modo abbiamo creato una nuova finestra grafica 
+                    
+#voglio visualizzare le 4 bande par(mfrow=c(2,2) ma voglio una palette diversa per ogni banda  
+par(mfrow=c(2,2))
+
+#blue palette
+clb <- colorRampPalette(c("blue4","blue2","light blue")) (100)             
+plot(l2011$B1_sre, col=clb)
+ 
+# green palette
+clg  <- colorRampPalette(c("chartreuse4","chartreuse2","chartreuse"))(100)                     
+plot(l2011$B2_sre, col=clg)
+                         
+# red palette
+clr <- colorRampPalette(c("brown1","brown3","brown4"))(100)
+plot(l2011$B3_sre, col=clr)
+                       
+#nir palette
+cln <- colorRampPalette(c("darkorchid4","darkorchid2","darkorchid3"))(100)
+plot(l2011$B4_sre, col=cln)
+                       
+# devo chiudere con un dev.off() il multiframe se voglio riprendere con una visualizzazione ad esempio singola dei prossimi
+
+#quando usiamo le bande di colori, vedi su nature communications "the misuse of colour in science communication"
+#il giallo, di tutte le lunghezze d'onda è quello che focalizza di più l'attenzione, il punto centrale del nostro grafico/mappa etc mettiamolo in giallo 
