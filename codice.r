@@ -2,6 +2,7 @@
 
 # install.packages("raster")
 library(raster)
+#selezionare Italy (milano) poiché molto stabile
 
 # Settaggio cartella di lavoro
 setwd("~/lab/") # Linux
@@ -135,7 +136,9 @@ library(raster)
 # setwd("/Users/emma/desktop/lab") #mac
 # setwd("C:/lab/") # windows
 
-setwd("C:/lab/")
+# sarebbe meglio un path più corto tipo setwd("C:/lab/")
+setwd("C:/Users/chiara/Desktop/landsat 2011")
+getwd()
 
 # nel mio caso sarà la scrittura per windows, e si aggiunge 
 # le virgolette possono essere sostituite dalla ' al posto della doppia virgoletta "
@@ -145,7 +148,8 @@ setwd("C:/lab/")
 # facciamo riferimento al reticolato rosso (path e row)
 # i puntini invece sono i centri di ogni immagine, la terra viene divisa in raws (righe) in stile battaglia navale
 # possiamo fare delle valutazioni comparative tra le immagini del 1998 e del 2011 considerando le stesse coordinate
-
+# bisogna invertire le barre, da \ nel codice devono essere tutte /
+# getwd ci serve per verificare se va tutto bene
 
 # importare le immagine landsat su R 
 # import dei dati attraverso una funzione all'interno del pacchetto raster: brick function
@@ -154,8 +158,17 @@ setwd("C:/lab/")
 # f2 (apre il file??) non ho capito
 # premendo ctrl A seleziona l'intero testo
 
-l2011 <- brick("nome file")
+# l2011 <- brick("nome file")
+l2011 <- brick("p224r63_2011_masked.grd")
 # segnando l2011 prima della funzione associamo a tutta la fase di importazione questo nome: l2011, in futuro potremo usare il nome invece che tutta la funzione
+# nel nome del file p sta per path e r sta per riga e ci da le "coordinate" dell'immagine
+#class: raster brick
+#dimension e resolution information
+#info sulle coordinate
+#sistema di riferimento (WGS84). proiezione utm e fuso (22), nel nostro caso
+#source, nome dell'immagine
+#names sta per i nomi delle varie bande dell'immagine: banda 1 blu, 2 verde, 3 del rosso e 4 dell'infrarosso vicino
+#valori minimi e massimi di riflettanza
 
 # andiamo a vedere graficamente i dati utilizzando la funzione: plot
 plot(l2011)
@@ -201,3 +214,9 @@ plot(nir, col=cl)
 
 # R non salva i dati raster che sono sempre temporanei per cui non serve salvare anche li
 # bisogna rifare tutto ogni volta
+
+#seconda lezione
+#oggi andiamo a cambiare la gamma dei colori delle nostre immagini considerando tutta la gamma dei colori che R prevede 
+# andiamo a creare una nuova colorRampPalette(c("xxx)
+cl <- colorRampPalette(c("cyan", "azure", "darkorchid", "aquamarine") (100)
+                      
