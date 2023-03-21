@@ -30,3 +30,5 @@ nir <- l2011$B1_sre
 
 # il codice che risulta è molto più snello
 plot(nir, col=cl)
+
+#aggiungi ultima lezione, recupera precedente
